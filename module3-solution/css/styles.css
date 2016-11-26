@@ -1,0 +1,43 @@
+body {
+  font-size: 16px;
+  color: black;
+  background:#80BE40;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+div.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#header-nav {
+    background-color: #47810B;
+    border-radius: 0;
+    border: 0;
+}
+
+
+#header-nav .navbar-brand { 
+    color: black;
+}
+
+
+.navbar-header button.navbar-toggle, .navbar-header .icon-bar {
+  border: 1px solid black;
+}
+
+#nav-list a {
+  color: black;
+  text-align: center;
+}
+#nav-list {
+    margin-top: 30px;
+}
+#nav-list a:hover {
+  background: #80BE40;
+}
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+
+
