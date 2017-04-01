@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyModule1App">
+    <head>
+        <title>Module 1 solution</title>
+        <meta charset="UTF-8">
+        <script src="js/angular.min.js"></script>
+        <script src="js/app.js"></script>
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body ng-controller="MyModule1Controller">
+        <h1>Plan you lunch items</h1>
+        <div>Give your lunch items</div>
+        <div>
+            <input id="{{lunchItemState}}" type="text" ng-model="userLunchItemsString">
+            <button ng-click="calculateLunchItems()">Check If Too Much</button><br>
+            <mark>Empty items are not calculated</mark>
+            
+        </div>
+        <div class="messageField" id="{{lunchItemState}}">{{lunchItemsMessage}}</div>
+    </body>
+</html>

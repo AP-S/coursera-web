@@ -1,0 +1,23 @@
+body {
+    border: 20px;
+}
+
+div.messageField {
+    padding: 30px 0px;
+}
+
+div.messageField#normal {
+    color: green;
+}
+
+div.messageField#empty {
+    color: red;
+}
+
+input#normal {
+    border-color: green;
+}
+
+input#empty {
+    border-color: red;
+}
