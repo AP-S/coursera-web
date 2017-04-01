@@ -14,7 +14,7 @@ function MsgController($scope) {
 
 
   $scope.calculateLunchItems = function () {
-    console.log("calculation starts " + $scope.userLunchItemsString);
+    
     if ($scope.userLunchItemsString != undefined && $scope.userLunchItemsString.length > 0) {
       var userLunchItems = $scope.userLunchItemsString.split(",");
       userLunchItems = filterOutEmptyItems(userLunchItems);
