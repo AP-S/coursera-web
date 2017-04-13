@@ -29,7 +29,7 @@ function NarrowItDownDirectiveController() {
   var list = this;
 
   list.hasListItems = function() {
-    console.log("hasListItems ", list.found.length);
+    //console.log("hasListItems ", list.found.length);
     if (list.found && list.found.length > 0)
     {
       return true;
@@ -55,9 +55,10 @@ function NarrowItDownController(MenuSearchService) {
     promise.then(function (promise) {
       vm.found = promise.data.menu_items;
       vm.title = vm.formatTitle(vm.found.length);
-      console.log("found ", vm.found);
+      //console.log("found ", vm.found);
     });
   }
+
   }
 
 
@@ -76,8 +77,8 @@ function MenuSearchService($http, ApiBasePath) {
       method: "GET",
       url: (ApiBasePath + "/menu_items.json")
     }).then(function (response) {
-      console.log("all items");
-      console.log(response.data.menu_items);
+      //console.log("all items");
+      //console.log(response.data.menu_items);
     
     var menu_items = [];
     if (response && response.data && response.data.menu_items) {
