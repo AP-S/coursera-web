@@ -43,20 +43,30 @@ NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var vm = this;
   vm.found = [];
-  
+  vm.searchFeedbackMessage = "";
+
   vm.formatTitle = function(count) {
     return "Found items (" + count + ")";
   }
   
   vm.narrowItDown = function() {
+    vm.searchFeedbackMessage = "";
+    vm.found = [];
     if (vm.searchTerm) {
     var promise = MenuSearchService.getMatchedMenuItems(vm.searchTerm.toLowerCase());
   
-    promise.then(function (promise) {
+    promise.then(function (promise) { 
       vm.found = promise.data.menu_items;
       vm.title = vm.formatTitle(vm.found.length);
       //console.log("found ", vm.found);
+      if (vm.found.length === 0) {
+        vm.searchFeedbackMessage = "Nothing found";
+      } else {
+        vm.searchFeedbackMessage = "";
+      }
     });
+  } else {
+    vm.searchFeedbackMessage = "Nothing found";
   }
 
   }
@@ -83,7 +93,7 @@ function MenuSearchService($http, ApiBasePath) {
     var menu_items = [];
     if (response && response.data && response.data.menu_items) {
       response.data.menu_items.forEach(function(element) {
-        if (element.name.toLowerCase().includes(searchTerm)) {
+        if (element.description.toLowerCase().includes(searchTerm)) {
           menu_items.push(element);    
         }
       });
