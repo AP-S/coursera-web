@@ -1,0 +1,10 @@
+<div ng-if="list.hasListItems()">
+<h3>Title: {{ list.listTitle }}</h3>
+<ol>
+  <li ng-repeat="item in list.found">
+    {{ item.name }}
+    <button ng-click="list.onRemove({index: $index})">Don't want this one!</button>
+  </li>
+</ol>
+</div>
+
