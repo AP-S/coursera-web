@@ -7,7 +7,6 @@ angular.module('MenuApp')
 RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function RoutesConfig($stateProvider, $urlRouterProvider) {
 
-  console.log("Routes configuration execute");
   // Redirect to home if no other URL matches
   $urlRouterProvider.otherwise('/home');
 
@@ -22,7 +21,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   // Categories
   .state('categories', {
     url: '/categories',
-    templateUrl: 'src/categories.template.html',
+    templateUrl: 'src/categories/template/categories.template.html',
     controller: 'CategoriesController as categoryList',
     resolve: {
       categoryItems: ['MenuDataService',
@@ -34,13 +33,9 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
             }]
     }
   })
-  // .state('items', {
-  //     url: '/items',
-  //     templateUrl: 'src/items.template.html'
-  //   });
     .state('items', {
     url: '/items/{categoryShortName}',
-    templateUrl: 'src/items.template.html',
+    templateUrl: 'src/items/template/items.template.html',
     controller: 'ItemsController as itemList',
     resolve: {
       items: ['$stateParams', 'MenuDataService',
@@ -53,8 +48,5 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     }
   });
 }
-console.log("menuapp module executed");
-// var promise = MenuDataService.getAllCategories();
-// console.log("promise", promise);
 
 })();

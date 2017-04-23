@@ -1,5 +1,6 @@
 body {
   font-size: 1.2em;
+  margin: 50px;
 }
 
 div.tabs > a, div.tabs > button {
