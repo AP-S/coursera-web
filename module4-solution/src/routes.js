@@ -34,10 +34,24 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
             }]
     }
   })
-  .state('items', {
-      url: '/items',
-      templateUrl: 'src/items.template.html'
-    });
+  // .state('items', {
+  //     url: '/items',
+  //     templateUrl: 'src/items.template.html'
+  //   });
+    .state('items', {
+    url: '/items/{categoryShortName}',
+    templateUrl: 'src/items.template.html',
+    controller: 'ItemsController as itemList',
+    resolve: {
+      items: ['$stateParams', 'MenuDataService',
+            function ($stateParams, MenuDataService) {
+              return MenuDataService.getItemsForCategory($stateParams.categoryShortName)
+                .then(function (items) {
+                  return items.data.menu_items;
+                });
+            }]
+    }
+  });
 }
 console.log("menuapp module executed");
 // var promise = MenuDataService.getAllCategories();

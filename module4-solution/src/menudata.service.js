@@ -16,7 +16,7 @@ function MenuDataService($http, ApiBasePath) {
       method: "GET",
       url: (ApiBasePath + "/categories.json")
     }).then(function (response) {
-      console.log("all items");
+      console.log("all categories");
       console.log(response.data);      
       return response;
   }).catch(function (error) {
@@ -24,39 +24,21 @@ function MenuDataService($http, ApiBasePath) {
   });
 };
 
-// List of shopping items
-  var items = [];
-
-  // Pre-populate a no cookie list
-  items.push({
-    name: "Sugar",
-    quantity: "2 bags",
-    description: "Sugar used for baking delicious umm... baked goods."
+service.getItemsForCategory = function(categoryShortName) {   
+   return $http({
+      method: "GET",
+      url: (ApiBasePath + "/menu_items.json"),
+      params: {category: categoryShortName}
+    }).then(function (response) {
+      console.log("categoryShortName", categoryShortName);
+      console.log("category all items");
+      console.log(response.data);      
+      return response;
+  }).catch(function (error) {
+    console.log("API request failed. Status " + error.status + " status text " + error.statusText);
   });
-  items.push({
-    name: "flour",
-    quantity: "1 bags",
-    description: "High quality wheat flour. Mix it with water, sugar, 2 raw eggs."
-  });
-  items.push({
-    name: "Chocolate Chips",
-    quantity: "3 bags",
-    description: "Put these in the dough. No reason, really. Gotta store them somewhere!"
-  });
+};
 
-  // Simulates call to server
-  // Returns a promise, NOT items array directly
-  service.getItems = function () {
-    var deferred = $q.defer();
-
-    // Wait 2 seconds before returning
-    $timeout(function () {
-      // deferred.reject(items);
-      deferred.resolve(items);
-    }, 800);
-
-    return deferred.promise;
-  };
 
 }
 })();

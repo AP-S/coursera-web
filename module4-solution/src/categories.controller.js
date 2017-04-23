@@ -10,7 +10,6 @@ function CategoriesController(categoryItems) {
   categoryList.categoryItems = categoryItems;
   console.log("CategoriesController categoryList.categoryItems", categoryList.categoryItems);
 
-  categoryList.test = "controller's test";
 }
 
 })();
