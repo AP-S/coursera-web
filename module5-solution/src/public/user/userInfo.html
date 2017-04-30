@@ -1,0 +1,14 @@
+<h1>User information</h1>
+    <div ng-if="$ctrl.user">
+        <div>First name: {{$ctrl.user.firstName}}</div>
+        <div>Last name: {{$ctrl.user.lastName}}</div>
+        <div>email: {{$ctrl.user.email}}</div>
+        <div>phone: {{$ctrl.user.phone}}</div>
+        <div>favorite dish</div>
+        <div>
+            <menu-item menu-item="$ctrl.user.favoriteMenuItem"></menu-item>
+        </div>
+    </div>
+    <div ng-if="$ctrl.user === undefined">
+        <span>Not Signed Up Yet. <a ui-sref="public.registration">Sign up Now!</a></span>
+    </div>
